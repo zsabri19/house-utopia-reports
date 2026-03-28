@@ -51,7 +51,8 @@
         .questions-box { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 30px; border-top: 4px solid #3498db; }
         .question-item { padding: 15px; margin: 10px 0; background: #f8f9fa; border-left: 4px solid #3498db; border-radius: 5px; }
         .question-number { font-weight: bold; color: #3498db; }
-        .answer-box { margin-top: 10px; padding: 10px; background: white; border: 1px dashed #bdc3c7; min-height: 40px; }
+        .answer-field { width: 100%; margin-top: 10px; padding: 12px; background: white; border: 1px solid #bdc3c7; border-radius: 5px; font-family: inherit; font-size: 14px; min-height: 50px; resize: vertical; }
+        .answer-field:focus { border-color: #3498db; outline: none; box-shadow: 0 0 0 2px rgba(52,152,219,0.2); }
 
         /* Data Entry Section */
         .data-entry { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 30px; border-top: 4px solid #9b59b6; }
@@ -215,32 +216,32 @@
 
             <div class="question-item">
                 <span class="question-number">Q1.</span> What is the current site status? Is wiring 100% complete?
-                <div class="answer-box">Answer: _________________________</div>
+                <textarea class="answer-field" rows="2" placeholder="Type your answer here..."></textarea>
             </div>
 
             <div class="question-item">
                 <span class="question-number">Q2.</span> Why does ODOO show "Finishing Stage" when physical survey shows only 50-90% wiring?
-                <div class="answer-box">Answer: _________________________</div>
+                <textarea class="answer-field" rows="2" placeholder="Type your answer here..."></textarea>
             </div>
 
             <div class="question-item">
                 <span class="question-number">Q3.</span> Why is the ODOO Sales Order total (969 OMR) only 33% of the contract value (2,946 OMR)?
-                <div class="answer-box">Answer: _________________________</div>
+                <textarea class="answer-field" rows="2" placeholder="Type your answer here..."></textarea>
             </div>
 
             <div class="question-item">
                 <span class="question-number">Q4.</span> Has the second payment (1,031 OMR) been invoiced? When can we expect collection?
-                <div class="answer-box">Answer: _________________________</div>
+                <textarea class="answer-field" rows="2" placeholder="Type your answer here..."></textarea>
             </div>
 
             <div class="question-item">
                 <span class="question-number">Q5.</span> What is the contractor's timeline for completing their scope so HU can proceed?
-                <div class="answer-box">Answer: _________________________</div>
+                <textarea class="answer-field" rows="2" placeholder="Type your answer here..."></textarea>
             </div>
 
             <div class="question-item">
                 <span class="question-number">Q6.</span> How many additional site visits have been conducted beyond the 2 contracted?
-                <div class="answer-box">Answer: _________________________</div>
+                <textarea class="answer-field" rows="2" placeholder="Type your answer here..."></textarea>
             </div>
         </div>
 
