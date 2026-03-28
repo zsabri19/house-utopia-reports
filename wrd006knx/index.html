@@ -69,10 +69,49 @@
         /* Print Button */
         .print-btn { position: fixed; top: 20px; right: 20px; background: #27ae60; color: white; padding: 12px 25px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; }
         .print-btn:hover { background: #1e8449; }
+        .export-btn { position: fixed; top: 20px; right: 200px; background: #3498db; color: white; padding: 12px 25px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; }
+        .export-btn:hover { background: #2980b9; }
     </style>
 </head>
 <body>
     <button class="print-btn" onclick="window.print()">🖨️ Print Report</button>
+    <button class="export-btn" onclick="exportAnswers()">📋 Export Answers</button>
+
+    <script>
+    function exportAnswers() {
+        let output = "=== House Utopia Survey Responses ===\n\n";
+        output += "Project: WRD006KNX - Aysar Albulushi\n";
+        output += "Date: " + new Date().toLocaleDateString() + "\n\n";
+
+        // Get all question answers
+        const questions = document.querySelectorAll('.question-item');
+        questions.forEach((q, i) => {
+            const question = q.querySelector('.question-number').textContent + ' ' + q.cloneNode(true).querySelector('.answer-field').previousSibling.textContent.trim();
+            const answer = q.querySelector('.answer-field').value || '(No answer)';
+            output += `Q${i+1}: ${answer}\n`;
+        });
+
+        // Get data entry fields
+        const inputs = document.querySelectorAll('.input-field, select.input-field');
+        const labels = ['Surveyor Name', 'Survey Date', 'Wiring Completion %', 'Issues Found', 'Next Visit Date', 'Contractor Ready', 'Additional Notes'];
+        output += "\n--- Survey Data ---\n";
+        let labelIdx = 0;
+        inputs.forEach(input => {
+            if (labelIdx < labels.length) {
+                const val = input.value || '(Not filled)';
+                output += `${labels[labelIdx]}: ${val}\n`;
+                labelIdx++;
+            }
+        });
+
+        // Create and download file
+        const blob = new Blob([output], { type: 'text/plain' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'WRD006KNX_Survey_Answers.txt';
+        a.click();
+    }
+    </script>
 
     <div class="container">
         <!-- Header -->
