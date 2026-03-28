@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Review Report - WRD006KNX</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 40px; background: #f5f7fa; }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* Header */
+        .header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+        .header h1 { margin: 0; font-size: 28px; }
+        .header .subtitle { opacity: 0.9; margin-top: 10px; }
+
+        /* KPI Cards */
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+        .kpi-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+        .kpi-card.critical { border-left: 5px solid #e74c3c; }
+        .kpi-card.warning { border-left: 5px solid #f39c12; }
+        .kpi-card.good { border-left: 5px solid #27ae60; }
+        .kpi-value { font-size: 32px; font-weight: bold; color: #2c3e50; }
+        .kpi-label { color: #7f8c8d; font-size: 14px; margin-top: 8px; }
+
+        /* Charts Section */
+        .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; }
+        .chart-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .chart-title { font-size: 18px; font-weight: bold; margin-bottom: 20px; color: #2c3e50; }
+
+        /* Progress Bar */
+        .progress-container { margin: 15px 0; }
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+        .progress-bar { height: 25px; background: #ecf0f1; border-radius: 12px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 13px; }
+        .progress-red { background: linear-gradient(90deg, #e74c3c, #c0392b); }
+        .progress-yellow { background: linear-gradient(90deg, #f39c12, #e67e22); }
+        .progress-green { background: linear-gradient(90deg, #27ae60, #1e8449); }
+        .progress-blue { background: linear-gradient(90deg, #3498db, #2980b9); }
+
+        /* Tables */
+        .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .data-table th { background: #34495e; color: white; padding: 12px; text-align: left; }
+        .data-table td { padding: 12px; border-bottom: 1px solid #ecf0f1; }
+        .data-table tr:hover { background: #f8f9fa; }
+
+        /* Gap Analysis */
+        .gap-indicator { padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .gap-critical { background: #fee; color: #c0392b; }
+        .gap-warning { background: #ffeaa7; color: #d68910; }
+        .gap-good { background: #d5f5e3; color: #1e8449; }
+
+        /* Questions Section */
+        .questions-box { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 30px; border-top: 4px solid #3498db; }
+        .question-item { padding: 15px; margin: 10px 0; background: #f8f9fa; border-left: 4px solid #3498db; border-radius: 5px; }
+        .question-number { font-weight: bold; color: #3498db; }
+        .answer-box { margin-top: 10px; padding: 10px; background: white; border: 1px dashed #bdc3c7; min-height: 40px; }
+
+        /* Data Entry Section */
+        .data-entry { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 30px; border-top: 4px solid #9b59b6; }
+        .input-field { width: 100%; padding: 10px; border: 1px solid #bdc3c7; border-radius: 5px; margin: 5px 0; }
+        .input-label { font-weight: bold; color: #2c3e50; font-size: 14px; }
+
+        /* Comparison Chart */
+        .comparison-row { display: flex; align-items: center; margin: 15px 0; }
+        .comparison-label { width: 150px; font-weight: bold; }
+        .comparison-bar-container { flex: 1; height: 30px; background: #ecf0f1; border-radius: 15px; overflow: hidden; }
+        .comparison-bar { height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        .comparison-value { width: 120px; text-align: right; font-weight: bold; }
+
+        /* Print Button */
+        .print-btn { position: fixed; top: 20px; right: 20px; background: #27ae60; color: white; padding: 12px 25px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; }
+        .print-btn:hover { background: #1e8449; }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Print Report</button>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🏠 Project Review Report</h1>
+            <div class="subtitle">WRD006KNX - Aysar Albulushi Home KNX | Date: March 28, 2026</div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card critical">
+                <div class="kpi-value">16 months</div>
+                <div class="kpi-label">Project Age (Expected: 3-6 months)</div>
+            </div>
+            <div class="kpi-card warning">
+                <div class="kpi-value">1,915 OMR</div>
+                <div class="kpi-label">Stuck Capital (65% of contract)</div>
+            </div>
+            <div class="kpi-card critical">
+                <div class="kpi-value">-1,977 OMR</div>
+                <div class="kpi-label">ODOO vs Contract Gap</div>
+            </div>
+            <div class="kpi-card good">
+                <div class="kpi-value">35%</div>
+                <div class="kpi-label">Payment Received</div>
+            </div>
+        </div>
+
+        <!-- Visual Charts -->
+        <div class="charts-grid">
+            <div class="chart-box">
+                <div class="chart-title">📊 Timeline Progress</div>
+                <div class="progress-container">
+                    <div class="progress-label"><span>Expected (6 months)</span><span>Actual (16 months)</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-red" style="width: 100%;">267% OVERDUE</div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label"><span>Wiring Complete</span><span>90% max</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-yellow" style="width: 70%;">70% Average</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <div class="chart-title">💰 Payment Status</div>
+                <div class="progress-container">
+                    <div class="progress-label"><span>Advance Paid (35%)</span><span>1,031 OMR</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-green" style="width: 35%;">35% ✓</div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label"><span>Second Payment (35%)</span><span>1,031 OMR</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-red" style="width: 35%;">PENDING</div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label"><span>Final Payment (30%)</span><span>884 OMR</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-red" style="width: 30%;">BLOCKED</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Value Comparison -->
+        <div class="chart-box" style="margin-bottom: 30px;">
+            <div class="chart-title">📈 Project Value Comparison (Three Sources)</div>
+            <div class="comparison-row">
+                <div class="comparison-label">Contract</div>
+                <div class="comparison-bar-container">
+                    <div class="comparison-bar" style="width: 100%; background: #3498db;">2,946 OMR</div>
+                </div>
+                <div class="comparison-value" style="color: #3498db;">100%</div>
+            </div>
+            <div class="comparison-row">
+                <div class="comparison-label">ODOO Sales</div>
+                <div class="comparison-bar-container">
+                    <div class="comparison-bar" style="width: 33%; background: #e74c3c;">969 OMR</div>
+                </div>
+                <div class="comparison-value" style="color: #e74c3c;">33%</div>
+            </div>
+            <div class="comparison-row">
+                <div class="comparison-label">Paid</div>
+                <div class="comparison-bar-container">
+                    <div class="comparison-bar" style="width: 35%; background: #27ae60;">1,031 OMR</div>
+                </div>
+                <div class="comparison-value" style="color: #27ae60;">35%</div>
+            </div>
+        </div>
+
+        <!-- Gap Analysis Table -->
+        <div class="chart-box" style="margin-bottom: 30px;">
+            <div class="chart-title">🔍 Gap Analysis Summary</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Gap Type</th>
+                        <th>Source</th>
+                        <th>Amount/Status</th>
+                        <th>Severity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Contract vs ODOO</td>
+                        <td>2,946 vs 969 OMR</td>
+                        <td>-1,977 OMR</td>
+                        <td><span class="gap-indicator gap-critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>ODOO vs Physical</td>
+                        <td>"Finishing" vs 50-90% wired</td>
+                        <td>10-40% overstated</td>
+                        <td><span class="gap-indicator gap-warning">WARNING</span></td>
+                    </tr>
+                    <tr>
+                        <td>Payment Timeline</td>
+                        <td>16 months vs 6 expected</td>
+                        <td>10 months overdue</td>
+                        <td><span class="gap-indicator gap-critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>Second Payment</td>
+                        <td>Pending 5+ months</td>
+                        <td>1,031 OMR</td>
+                        <td><span class="gap-indicator gap-warning">WARNING</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Questions Section -->
+        <div class="questions-box">
+            <div class="chart-title">❓ Questions for Surveyor / Team</div>
+            <p style="color: #7f8c8d; margin-bottom: 20px;">Please provide answers to the following questions:</p>
+
+            <div class="question-item">
+                <span class="question-number">Q1.</span> What is the current site status? Is wiring 100% complete?
+                <div class="answer-box">Answer: _________________________</div>
+            </div>
+
+            <div class="question-item">
+                <span class="question-number">Q2.</span> Why does ODOO show "Finishing Stage" when physical survey shows only 50-90% wiring?
+                <div class="answer-box">Answer: _________________________</div>
+            </div>
+
+            <div class="question-item">
+                <span class="question-number">Q3.</span> Why is the ODOO Sales Order total (969 OMR) only 33% of the contract value (2,946 OMR)?
+                <div class="answer-box">Answer: _________________________</div>
+            </div>
+
+            <div class="question-item">
+                <span class="question-number">Q4.</span> Has the second payment (1,031 OMR) been invoiced? When can we expect collection?
+                <div class="answer-box">Answer: _________________________</div>
+            </div>
+
+            <div class="question-item">
+                <span class="question-number">Q5.</span> What is the contractor's timeline for completing their scope so HU can proceed?
+                <div class="answer-box">Answer: _________________________</div>
+            </div>
+
+            <div class="question-item">
+                <span class="question-number">Q6.</span> How many additional site visits have been conducted beyond the 2 contracted?
+                <div class="answer-box">Answer: _________________________</div>
+            </div>
+        </div>
+
+        <!-- Data Entry Section -->
+        <div class="data-entry">
+            <div class="chart-title">📝 Team Data Entry Section</div>
+            <p style="color: #7f8c8d; margin-bottom: 20px;">Complete the following information:</p>
+
+            <table class="data-table">
+                <tr>
+                    <td style="width: 30%;">
+                        <div class="input-label">Surveyor Name</div>
+                        <input type="text" class="input-field" placeholder="Enter name">
+                    </td>
+                    <td style="width: 30%;">
+                        <div class="input-label">Survey Date</div>
+                        <input type="date" class="input-field">
+                    </td>
+                    <td style="width: 40%;">
+                        <div class="input-label">Wiring Completion %</div>
+                        <input type="text" class="input-field" placeholder="e.g., 85%">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-label">Issues Found (Count)</div>
+                        <input type="number" class="input-field" placeholder="Number">
+                    </td>
+                    <td>
+                        <div class="input-label">Next Visit Date</div>
+                        <input type="date" class="input-field">
+                    </td>
+                    <td>
+                        <div class="input-label">Contractor Ready</div>
+                        <select class="input-field">
+                            <option>Select...</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Partial</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <div class="input-label">Additional Notes / Findings:</div>
+                <textarea class="input-field" rows="4" placeholder="Enter any additional observations..."></textarea>
+            </div>
+
+            <div style="margin-top: 20px; text-align: right;">
+                <div class="input-label">Completed By:</div>
+                <input type="text" class="input-field" style="width: 300px; display: inline-block;" placeholder="Name">
+                <input type="date" class="input-field" style="width: 200px; display: inline-block;">
+            </div>
+        </div>
+
+        <!-- Recommendations Summary -->
+        <div class="chart-box">
+            <div class="chart-title">✅ Priority Actions</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Priority</th>
+                        <th>Action</th>
+                        <th>Owner</th>
+                        <th>Due</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="gap-indicator gap-critical">URGENT</span></td>
+                        <td>Enter full contract (2,946 OMR) in ODOO Sales</td>
+                        <td>Sales Team</td>
+                        <td>Immediate</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gap-indicator gap-critical">URGENT</span></td>
+                        <td>Invoice and follow up for 2nd payment (1,031 OMR)</td>
+                        <td>Finance</td>
+                        <td>This Week</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gap-indicator gap-warning">HIGH</span></td>
+                        <td>Update ODOO project status to match physical reality</td>
+                        <td>Project Manager</td>
+                        <td>This Week</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gap-indicator gap-good">MEDIUM</span></td>
+                        <td>Schedule site visit to verify wiring completion</td>
+                        <td>Technician</td>
+                        <td>Next Week</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 12px;">
+            <p>Generated by Smart Home Project Review Skill | House Utopia</p>
+            <p>Report Date: March 28, 2026 | Version 1.0</p>
+        </div>
+    </div>
+</body>
+</html>
